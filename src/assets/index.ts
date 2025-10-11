@@ -1,0 +1,13 @@
+export { default as buy } from './audios/buy.mp3'
+export { default as clickButton } from './audios/clickButton.wav'
+export { default as close } from './audios/close.wav'
+export { default as goal } from './audios/goal.mp3'
+export { default as open } from './audios/open.wav'
+export { default as pop } from './audios/pop.mp3'
+
+export { default as bengala } from './images/bengala.png'
+export { default as cachorro } from './images/cachorro.png'
+export { default as icon } from './images/icon.png'
+export { default as leitorDeTela } from './images/leitor-de-tela.png'
+export { default as lupa } from './images/lupa.png'
+export { default as splash } from './images/splash.png'
