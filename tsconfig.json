@@ -6,14 +6,14 @@
     "paths": {
       "@assets": ["assets/"],
       "@app": ["app/"],
-      "@components": ["components/"],
+      "@components/*": ["components/*"],
       "@contexts": ["contexts/"],
       "@data": ["data/"],
       "@hooks": ["hooks/"],
       "@navigation": ["navigation/"],
       "@services": ["services/"],
-      "@theme": ["theme/"],
-      "@utils": ["utils/"],
+      "@theme/*": ["theme/*"],
+      "@utils/*": ["utils/*"],
       "@views": ["views/"]
     }
   }

@@ -1,11 +1,12 @@
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Text } from "react-native";
 import { styles } from "./styles";
+import Header from "@components/layout/header";
 
 function Home() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Vision Up</Text>
+      <Header />
     </SafeAreaView>
   );
 }
