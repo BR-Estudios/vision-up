@@ -4,6 +4,7 @@
     "strict": true,
     "baseUrl": "src",
     "paths": {
+      "@types": ["@types/"],
       "@assets": ["assets/"],
       "@app": ["app/"],
       "@components/*": ["components/*"],
