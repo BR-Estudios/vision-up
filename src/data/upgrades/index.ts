@@ -1,6 +1,6 @@
 import { bengala, lupa, cachorro, leitorDeTela } from '@assets';
 
-export const upgradesData = [
+export const upgradesData: UpgradeItem[] = [
   {
     id: 'u1',
     name: 'Bengala',

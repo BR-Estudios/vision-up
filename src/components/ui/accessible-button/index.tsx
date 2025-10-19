@@ -7,6 +7,7 @@ export function AccessibleButton({
   label,
   hint,
   onPress,
+  disabled = true
 }: AccessibleButtonProps) {
   return (
     <TouchableOpacity
@@ -16,6 +17,7 @@ export function AccessibleButton({
       activeOpacity={0.6}
       style={styles.iconContainer}
       onPress={onPress}
+      disabled={disabled}
     >
       <Image source={source} style={styles.icon} contentFit="contain" />
     </TouchableOpacity>
