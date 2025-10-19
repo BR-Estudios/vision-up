@@ -3,6 +3,7 @@ import { styles } from "./styles";
 import Header from "@components/layout/header";
 import { StatusBar } from "expo-status-bar";
 import Upgrade from "@components/ui/upgrade";
+import Tabs from "@components/layout/tabs";
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
       <StatusBar style="light" />
       <Header />
       <Upgrade />
+      <Tabs />
     </SafeAreaView>
   );
 }
