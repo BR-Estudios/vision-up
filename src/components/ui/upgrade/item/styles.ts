@@ -24,6 +24,20 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
+  containerDisabled: {
+    flexDirection: 'row',
+    backgroundColor: colors.currentLine,
+    padding: 12,
+    borderRadius: 12,
+    marginBottom: 12,
+  },
+  containerDone: {
+    flexDirection: 'row',
+    backgroundColor: colors.green,
+    padding: 12,
+    borderRadius: 12,
+    marginBottom: 12,
+  },
   name: {
     fontSize: 18,
     fontWeight: "bold",
@@ -54,7 +68,7 @@ export const styles = StyleSheet.create({
   buyDisabled: {
     backgroundColor: colors.selection,
     padding: 10,
-    alignItems: 'center',
+    alignItems: '',
     justifyContent: 'center',
     borderRadius: 8,
   },

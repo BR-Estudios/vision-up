@@ -3,4 +3,5 @@ type AccessibleButtonProps = {
   label: string;
   hint?: string;
   onPress?: TouchableOpacityProps["onPress"];
+  disabled?: boolean;
 };
