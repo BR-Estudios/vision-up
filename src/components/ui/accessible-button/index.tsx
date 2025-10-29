@@ -1,4 +1,4 @@
-import { TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import { Image } from "expo-image";
 import { styles } from "./styles";
 
@@ -7,7 +7,7 @@ export function AccessibleButton({
   label,
   hint,
   onPress,
-  disabled = true
+  disabled
 }: AccessibleButtonProps) {
   return (
     <TouchableOpacity

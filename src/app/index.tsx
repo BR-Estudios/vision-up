@@ -11,7 +11,7 @@ function Home() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
       <Header />
-      <UpgradeList upgrades={upgradesData} />
+      <UpgradeList />
       <Tabs />
     </SafeAreaView>
   );

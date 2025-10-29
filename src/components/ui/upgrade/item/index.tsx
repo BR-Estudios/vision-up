@@ -1,27 +1,32 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import { styles } from "./styles";
-import { AccessibleButton } from "@components/ui/accessible-button";
+import { View, Text, TouchableOpacity } from 'react-native';
+import { styles } from './styles';
+import { AccessibleButton } from '@components/ui/accessible-button';
+import { useGame } from 'store/game';
+import { useUpgrades } from 'store/upgrades';
 
-export default function UpgradeItem({
-  item,
-  canAfford,
-  onBuy,
-  onActivate,
-}: UpgradeItemProps) {
+export default function UpgradeItem({ item }: UpgradeItemProps) {
+  const { game } = useGame();
+  const { buy, incrementVps } = useUpgrades();
+
+  const canAfford = game.vps >= item.costBase;
+
   const containerStyle = item.done
     ? styles.containerDone
     : !item.unlocked
     ? styles.containerDisabled
     : styles.container;
 
-  // Desativa o botão para upgrades bloqueados ou concluídos, e mantém ativo nos demais
+    // Botão principal do clicker — só clicável se estiver desbloqueado
   const accessibleButtonProps = {
     label: `Ícone do upgrade ${item.name}`,
     source: item.icon,
-    ...(item.done || !item.unlocked
-      ? { disabled: true }
-      : { hint: `Fornece +${item.vps} VPs`, onPress: onActivate }),
+    hint: item.unlocked
+      ? `Toque para ganhar VPs!`
+      : `Bloqueado — compre para desbloquear.`,
+    onPress: item.unlocked ? () => incrementVps(item.vps) : undefined,
+    disabled: !item.unlocked,
   };
+
 
   return (
     <View style={containerStyle}>
@@ -36,14 +41,17 @@ export default function UpgradeItem({
             {item.done ? (
               <Text style={styles.level}>Nível Máximo</Text>
             ) : (
+              // ainda bloqueado (precisa comprar primeiro)
               !item.unlocked && (
                 <TouchableOpacity
                   style={canAfford ? styles.buy : styles.buyDisabled}
-                  onPress={onBuy}
+                  onPress={() => buy(item.id)}
                   disabled={!canAfford}
                   activeOpacity={0.6}
                 >
-                  <Text style={styles.buyText}>Custo: {item.costBase} VPs para desbloquear</Text>
+                  <Text style={styles.buyText}>
+                    Custo: {item.costBase} VPs para desbloquear
+                  </Text>
                 </TouchableOpacity>
               )
             )}
@@ -64,11 +72,13 @@ export default function UpgradeItem({
 
               <TouchableOpacity
                 style={canAfford ? styles.buy : styles.buyDisabled}
-                onPress={onBuy}
+                onPress={() => buy(item.id)}
                 disabled={!canAfford}
                 activeOpacity={0.6}
               >
-                <Text style={styles.buyText}>Custo: {item.costBase} VPs</Text>
+                <Text style={styles.buyText}>
+                  Custo: {item.costBase} VPs
+                </Text>
               </TouchableOpacity>
             </View>
           </>

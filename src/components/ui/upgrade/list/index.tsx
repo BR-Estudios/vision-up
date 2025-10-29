@@ -1,13 +1,12 @@
-import { FlatList } from "react-native";
-import UpgradeItem from "../item";
+import { FlatList } from 'react-native';
+import UpgradeItem from '../item';
+import { useGame } from 'store/game';
+import { useUpgrades } from 'store/upgrades';
 
-type UpgradeListProps = {
-  upgrades: UpgradeItem[];
-};
+export default function UpgradeList() {
+  const { game } = useGame();
+  const { upgrades, buy, incrementVps } = useUpgrades();
 
-export default function UpgradeList({
-  upgrades,
-}: UpgradeListProps) {
   return (
     <FlatList
       data={upgrades}
@@ -15,9 +14,9 @@ export default function UpgradeList({
       renderItem={({ item }) => (
         <UpgradeItem
           item={item}
-          canAfford={false}
-          onActivate={() => console.log("ok")}
-          onBuy={() => console.log("ok")}
+          canAfford={game.vps >= item.costBase}
+          onActivate={() => incrementVps(item.vps)}
+          onBuy={() => buy(Number(item.id))}
         />
       )}
     />
