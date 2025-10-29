@@ -4,9 +4,10 @@ import { colors } from "@theme/colors";
 import { translation } from "@utils/locale";
 import { formater } from "@utils/formater";
 import { styles } from "./styles";
+import { useGame } from "store/game";
 
 export default function Header() {
-  // const { game, setGame } = useGame();
+  const { game } = useGame();
 
   return (
     <View style={styles.header}>
@@ -17,8 +18,8 @@ export default function Header() {
           color={colors.comment}
         />
 
-        <Text accessibilityLabel={translation("accessibilityLabel.header.vps", { vps: formater.format(0) })} style={styles.vps}>
-          {formater.format(0)}
+        <Text accessibilityLabel={translation("accessibilityLabel.header.vps", { vps: formater.format(game.vps) })} style={styles.vps}>
+          {formater.format(game.vps)}
         </Text>
       </View>
 
